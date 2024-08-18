@@ -1,0 +1,60 @@
+//Se realiza la carga de 10 valores enteros por teclado. Se desea conocer:
+//• La cantidad de valores negativos ingresados.
+//• La cantidad de valores positivos ingresados.
+//• La cantidad de múltiplos de 15.
+//• El valor acumulado de los números ingresados que son pares.
+
+const readline = require('readline');
+
+const rl = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout
+});
+
+function procesarValores() {
+    let cantidadNegativos = 0;
+    let cantidadPositivos = 0;
+    let cantidadMultiplosDe15 = 0;
+    let sumaPares = 0;
+    let valoresIngresados = 0;
+
+    function pedirValor() {
+        if (valoresIngresados < 10) {
+            rl.question(`Ingrese el valor ${valoresIngresados + 1}: `, (input) => {
+                const valor = parseInt(input, 10);
+
+                // Verificar si el valor es negativo o positivo
+                if (valor < 0) {
+                    cantidadNegativos++;
+                } else if (valor > 0) {
+                    cantidadPositivos++;
+                }
+
+                // Verificar si el valor es múltiplo de 15
+                if (valor % 15 === 0) {
+                    cantidadMultiplosDe15++;
+                }
+
+                // Verificar si el valor es par y sumarlo
+                if (valor % 2 === 0) {
+                    sumaPares += valor;
+                }
+
+                valoresIngresados++;
+                pedirValor();
+            });
+        } else {
+            rl.close();
+            // Mostrar resultados
+            console.log(`Cantidad de valores negativos: ${cantidadNegativos}`);
+            console.log(`Cantidad de valores positivos: ${cantidadPositivos}`);
+            console.log(`Cantidad de múltiplos de 15: ${cantidadMultiplosDe15}`);
+            console.log(`Suma de los valores pares: ${sumaPares}`);
+        }
+    }
+
+    pedirValor();
+}
+
+// Ejecutar la función
+procesarValores();

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Descuento en la tienda de coches</title>
+</head>
+<body>
+    <h1>Calculadora de Descuento para Coches Ford</h1>
+    
+    <label for="modelo">Seleccione el modelo del coche:</label>
+    <select id="modelo">
+        <option value="FORD FIESTA">Ford Fiesta</option>
+        <option value="FORD FOCUS">Ford Focus</option>
+        <option value="FORD ESCAPE">Ford Escape</option>
+    </select>
+
+    <label for="precio">Ingrese el precio del coche:</label>
+    <input type="number" id="precio" placeholder="Precio del coche">
+
+    <button onclick="calcularDescuento()">Calcular Descuento</button>
+
+    <h2 id="resultado"></h2>
+
+    <script>
+        function calcularDescuento() {
+            const modelo = document.getElementById('modelo').value;
+            const precio = parseFloat(document.getElementById('precio').value);
+            let descuento = 0;
+
+            // Determinar el porcentaje de descuento según el modelo
+            if (modelo === "FORD FIESTA") {
+                descuento = 0.05;
+            } else if (modelo === "FORD FOCUS") {
+                descuento = 0.10;
+            } else if (modelo === "FORD ESCAPE") {
+                descuento = 0.20;
+            }
+
+            // Calcular el descuento aplicado y el precio final
+            const descuentoAplicado = precio * descuento;
+            const precioFinal = precio - descuentoAplicado;
+
+            // Mostrar el resultado en HTML
+            const resultado = document.getElementById('resultado');
+            resultado.innerHTML = `Modelo seleccionado: ${modelo}<br>
+                                   Descuento aplicado: $${descuentoAplicado.toFixed(2)}<br>
+                                   Precio final: $${precioFinal.toFixed(2)}`;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+//Crear una función que determine la nota final de un alumno, la cual depende
+//de lo siguiente:
+//• Examen =20%
+//• tareas = 40%
+//• asistencia = 10%
+//• investigación = 30%
+//Al final deberá mostrar los datos del alumno, nombre, carnet y nota final.
+
+
+function calcularNotaFinal(nombre, carnet, examen, tareas, asistencia, investigacion) {
+    // Calculamos la nota final con los porcentajes correspondientes
+    const notaFinal = (examen * 0.20) + (tareas * 0.40) + (asistencia * 0.10) + (investigacion * 0.30);
+    
+    // Devolvemos los datos del alumno junto con la nota final
+    return `Nombre: ${nombre}\nCarnet: ${carnet}\nNota Final: ${notaFinal.toFixed(2)}`;
+}
+
+// Ejemplo de uso
+const nombreAlumno = "Juan Pérez";
+const carnetAlumno = "A00123456";
+const notaExamen = 85;
+const notaTareas = 90;
+const notaAsistencia = 95;
+const notaInvestigacion = 88;
+
+console.log(calcularNotaFinal(nombreAlumno, carnetAlumno, notaExamen, notaTareas, notaAsistencia, notaInvestigacion));
